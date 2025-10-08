@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerald International School Mannarkkad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #8B0000;
+            --secondary-red: #A52A2A;
+            --accent-red: #C41E3A;
+            --light-red: #DC143C;
+            --cream: #FFF8F0;
+            --gold: #D4AF37;
+            --dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-gray);
+            background: var(--cream);
+        }
+
+        .navbar {
+            background: var(--primary-red);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%);
+            padding: 150px 5% 100px;
+            color: white;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            background: var(--gold);
+            color: var(--primary-red);
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary-red);
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.15);
+        }
+
+        .about-card h3 {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stats {
+            background: var(--primary-red);
+            padding: 60px 5%;
+            color: white;
+        }
+
+        .stats-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .facility-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .facility-card:hover {
+            transform: scale(1.03);
+        }
+
+        .facility-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--secondary-red), var(--accent-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .facility-content {
+            padding: 1.5rem;
+        }
+
+        .facility-content h3 {
+            color: var(--primary-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .message-section {
+            background: white;
+            padding: 60px 5%;
+            margin: 80px auto;
+            max-width: 1200px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .message-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .message-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .message-text h3 {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .message-text h4 {
+            color: var(--secondary-red);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .message-text p {
+            margin-bottom: 1rem;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .why-choose {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%);
+            padding: 80px 5%;
+            color: white;
+        }
+
+        .why-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .why-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .why-card h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 5% 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .message-content {
+                grid-template-columns: 1fr;
+            }
+
+            .message-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">EMERALD INTERNATIONAL SCHOOL</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#academics">Academics</a></li>
+                <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#admissions">Admissions</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>WELCOME TO EMERALD INTERNATIONAL SCHOOL</h1>
+        <p>At Emerald International School Mannarkkad, we cultivate excellence through a commitment to academic rigor, character development, and innovative thinking. Our distinguished institution empowers students to become ethical leaders and compassionate global citizens prepared for the challenges of tomorrow.</p>
+        <a href="#admissions" class="cta-button">Begin Your Journey</a>
+    </section>
+
+    <section class="section" id="about">
+        <h2 class="section-title">Excellence in Education</h2>
+        <p style="text-align: center; max-width: 900px; margin: 0 auto 3rem; font-size: 1.1rem;">
+            Emerald International School stands as a beacon of educational excellence in Mannarkkad, dedicated to nurturing young minds through a comprehensive curriculum that balances academic achievement with holistic development.
+        </p>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Academic Excellence</h3>
+                <p>Our rigorous curriculum, delivered by distinguished educators, ensures students achieve the highest standards of academic performance while developing critical thinking and analytical skills essential for success in higher education and beyond.</p>
+            </div>
+            <div class="about-card">
+                <h3>Character Development</h3>
+                <p>We instill timeless values of integrity, responsibility, and ethical leadership, preparing students to contribute meaningfully to society with wisdom, compassion, and a strong moral compass.</p>
+            </div>
+            <div class="about-card">
+                <h3>Global Perspective</h3>
+                <p>Through our international curriculum and diverse learning experiences, we cultivate global citizenship, cross-cultural understanding, and the skills necessary to thrive in an interconnected world.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h2>1500+</h2>
+                <p>Students Enrolled</p>
+            </div>
+            <div class="stat-item">
+                <h2>85+</h2>
+                <p>Dedicated Faculty</p>
+            </div>
+            <div class="stat-item">
+                <h2>98%</h2>
+                <p>Parent Satisfaction</p>
+            </div>
+            <div class="stat-item">
+                <h2>150+</h2>
+                <p>Annual Achievements</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="facilities">
+        <h2 class="section-title">World-Class Facilities</h2>
+        <div class="facilities-grid">
+            <div class="facility-card">
+                <div class="facility-image">🔬</div>
+                <div class="facility-content">
+                    <h3>Science Laboratories</h3>
+                    <p>State-of-the-art laboratories equipped with modern instruments fostering scientific inquiry and experimentation.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image">📚</div>
+                <div class="facility-content">
+                    <h3>Digital Library</h3>
+                    <p>Comprehensive collection of resources with digital access, supporting research and lifelong learning.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image">💻</div>
+                <div class="facility-content">
+                    <h3>Technology Center</h3>
+                    <p>Advanced computer labs with high-speed connectivity preparing students for the digital age.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image">⚽</div>
+                <div class="facility-content">
+                    <h3>Sports Complex</h3>
+                    <p>Extensive athletic facilities including courts, fields, and indoor sports areas promoting physical excellence.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image">🎨</div>
+                <div class="facility-content">
+                    <h3>Arts Studios</h3>
+                    <p>Dedicated spaces for music, dance, and visual arts encouraging creative expression and artistic development.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image">🚌</div>
+                <div class="facility-content">
+                    <h3>Safe Transportation</h3>
+                    <p>Comprehensive bus service with GPS tracking ensuring secure and convenient commute for all students.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="message-section">
+        <div class="message-content">
+            <div class="message-image">🎓</div>
+            <div class="message-text">
+                <h3>MESSAGE FROM THE PRINCIPAL</h3>
+                <h4>Inspiring Excellence, Building Character</h4>
+                <p>
+                    Education is the cornerstone of civilization, the foundation upon which we build not merely careers, but lives of purpose and meaning. At Emerald International School, we embrace the profound responsibility of shaping young minds, nurturing their intellectual curiosity, and cultivating the moral courage necessary to lead with integrity in an ever-changing world.
+                </p>
+                <p>
+                    Our commitment extends beyond academic achievement to the development of character, wisdom, and compassion. We believe that true education awakens the human spirit, inspires noble aspirations, and empowers individuals to contribute meaningfully to society. As Aristotle wisely observed, "Educating the mind without educating the heart is no education at all."
+                </p>
+                <p>
+                    Together with our distinguished faculty and engaged families, we create an environment where excellence is not merely pursued but embodied, where every student is encouraged to discover their unique potential and cultivate the virtues that will guide them throughout their lives.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <section class="why-choose">
+        <h2 class="section-title" style="color: white;">Why Choose Emerald</h2>
+        <div class="why-grid">
+            <div class="why-card">
+                <h3>Distinguished Faculty</h3>
+                <p>Our accomplished educators bring passion, expertise, and dedication to every classroom, inspiring students to reach their highest potential.</p>
+            </div>
+            <div class="why-card">
+                <h3>Proven Excellence</h3>
+                <p>A track record of outstanding academic results and alumni success across leading universities worldwide.</p>
+            </div>
+            <div class="why-card">
+                <h3>Holistic Development</h3>
+                <p>Comprehensive programs addressing intellectual, physical, artistic, and emotional growth.</p>
+            </div>
+            <div class="why-card">
+                <h3>Values-Based Education</h3>
+                <p>Strong emphasis on ethics, integrity, and social responsibility preparing students for ethical leadership.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <h2 class="section-title">Visit Our Campus</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                We invite you to experience the Emerald difference firsthand. Schedule a campus tour and discover why families trust us with their children's education.
+            </p>
+            <a href="#" class="cta-button">Schedule a Visit</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>Emerald International School</h3>
+                <p>Mannarkkad, Kerala</p>
+                <p>Excellence in Education Since Foundation</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <a href="#about">About Us</a>
+                <a href="#academics">Academics</a>
+                <a href="#admissions">Admissions</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div>
+                <h3>Connect With Us</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">YouTube</a>
+            </div>
+            <div>
+                <h3>Contact Information</h3>
+                <p>Email: info@emeraldinternational.edu</p>
+                <p>Phone: +91 XXXX XXXXXX</p>
+                <p>Mannarkkad, Kerala, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Emerald International School Mannarkkad. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
