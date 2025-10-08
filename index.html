@@ -398,6 +398,41 @@
             min-height: 400px;
         }
 
+        .neet-jee-section {
+            background: white;
+            padding: 80px 5%;
+            margin: 40px auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .neet-jee-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .neet-jee-image {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.2);
+        }
+
+        .neet-jee-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .neet-jee-content {
+            padding: 2rem;
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
@@ -421,6 +456,11 @@
 
             .achievements-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .neet-jee-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
     </style>
@@ -463,6 +503,34 @@
             <div class="about-card">
                 <h3>Global Perspective</h3>
                 <p>Through our international curriculum and diverse learning experiences, we cultivate global citizenship, cross-cultural understanding, and the skills necessary to thrive in an interconnected world.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section neet-jee-section" id="academics">
+        <div class="neet-jee-container">
+            <div class="neet-jee-image">
+                <img src="images/neet-jee.jpg" alt="NEET & JEE Foundation Program">
+            </div>
+            <div class="neet-jee-content">
+                <h2 style="color: var(--primary-red); font-size: 2.5rem; margin-bottom: 1rem;">NEET & JEE Foundation Program</h2>
+                <h3 style="color: var(--secondary-red); font-size: 1.5rem; margin-bottom: 1.5rem; font-style: italic;">Strong foundation today, brighter success tomorrow</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                    Emerald International School proudly announces the launch of our comprehensive NEET & JEE Foundation Program, designed to nurture the next generation of doctors and engineers.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                    Our expert faculty provides specialized coaching integrated with regular academics, ensuring students develop a strong conceptual foundation while maintaining academic excellence across all subjects.
+                </p>
+                <div style="margin-top: 2rem;">
+                    <h4 style="color: var(--primary-red); margin-bottom: 1rem;">Program Highlights:</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0; font-size: 1.05rem;">✓ Expert faculty with proven track records</li>
+                        <li style="padding: 0.5rem 0; font-size: 1.05rem;">✓ Comprehensive study materials and resources</li>
+                        <li style="padding: 0.5rem 0; font-size: 1.05rem;">✓ Regular assessments and progress tracking</li>
+                        <li style="padding: 0.5rem 0; font-size: 1.05rem;">✓ Integrated approach with school curriculum</li>
+                        <li style="padding: 0.5rem 0; font-size: 1.05rem;">✓ Individual attention and mentorship</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -598,16 +666,6 @@
                 <div class="achievement-content">
                     <h3>🥈 Poothalam 25 - Team Azure (Runners-Up)</h3>
                     <p>Team Azure demonstrated outstanding performance and determination, earning the runners-up position. Their dedication reflects the competitive spirit we nurture at Emerald.</p>
-                </div>
-            </div>
-
-            <div class="achievement-card">
-                <div class="achievement-image">
-                    <img src="images/neet-jee.jpg" alt="NEET & JEE Foundation Launch">
-                </div>
-                <div class="achievement-content">
-                    <h3>🎓 NEET & JEE Foundation Launched</h3>
-                    <p><strong>Strong foundation today, brighter success tomorrow.</strong> We're proud to launch our NEET & JEE Foundation program - preparing future doctors and engineers with expert guidance and comprehensive training.</p>
                 </div>
             </div>
         </div>
