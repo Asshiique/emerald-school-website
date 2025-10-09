@@ -1057,8 +1057,8 @@
     <script>
         // Smooth scroll animation on scroll
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -1069,25 +1069,42 @@
             });
         }, observerOptions);
 
-        // Observe all elements that need animation
-        document.addEventListener('DOMContentLoaded', () => {
+        // Initialize animations when DOM is loaded
+        function initAnimations() {
             // Observe section titles
-            document.querySelectorAll('.section-title').forEach(el => observer.observe(el));
+            document.querySelectorAll('.section-title').forEach(el => {
+                observer.observe(el);
+            });
             
             // Observe cards
-            document.querySelectorAll('.about-card').forEach(el => observer.observe(el));
-            document.querySelectorAll('.facility-card').forEach(el => observer.observe(el));
-            document.querySelectorAll('.achievement-card').forEach(el => observer.observe(el));
+            document.querySelectorAll('.about-card').forEach(el => {
+                observer.observe(el);
+            });
+            
+            document.querySelectorAll('.facility-card').forEach(el => {
+                observer.observe(el);
+            });
+            
+            document.querySelectorAll('.achievement-card').forEach(el => {
+                observer.observe(el);
+            });
             
             // Observe stats
-            document.querySelectorAll('.stat-item').forEach(el => observer.observe(el));
+            document.querySelectorAll('.stat-item').forEach(el => {
+                observer.observe(el);
+            });
             
             // Observe message section
-            document.querySelectorAll('.message-section').forEach(el => observer.observe(el));
+            document.querySelectorAll('.message-section').forEach(el => {
+                observer.observe(el);
+            });
             
             // Observe NEET/JEE section
-            document.querySelectorAll('.neet-jee-image, .neet-jee-content').forEach(el => observer.observe(el));
-        });
+            const neetJeeImage = document.querySelector('.neet-jee-image');
+            const neetJeeContent = document.querySelector('.neet-jee-content');
+            if (neetJeeImage) observer.observe(neetJeeImage);
+            if (neetJeeContent) observer.observe(neetJeeContent);
+        }
 
         // Navbar scroll effect
         let lastScroll = 0;
@@ -1147,8 +1164,17 @@
             });
         }, { threshold: 0.5 });
 
+        // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.stat-item').forEach(el => statsObserver.observe(el));
+            initAnimations();
+            document.querySelectorAll('.stat-item').forEach(el => {
+                statsObserver.observe(el);
+            });
+        });
+
+        // Also initialize on window load (backup)
+        window.addEventListener('load', () => {
+            initAnimations();
         });
     </script>
 </body>
