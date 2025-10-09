@@ -27,6 +27,77 @@
             line-height: 1.6;
             color: var(--text-gray);
             background: var(--cream);
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .animate-delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .animate-delay-3 {
+            animation-delay: 0.6s;
         }
 
         .navbar {
@@ -77,6 +148,7 @@
             color: white;
             text-align: center;
             margin-top: 60px;
+            animation: fadeIn 1s ease;
         }
 
         .hero h1 {
@@ -84,6 +156,7 @@
             margin-bottom: 1rem;
             font-weight: normal;
             letter-spacing: 2px;
+            animation: fadeInUp 1s ease 0.3s backwards;
         }
 
         .hero p {
@@ -92,6 +165,7 @@
             margin: 0 auto 2rem;
             opacity: 0.95;
             line-height: 1.8;
+            animation: fadeInUp 1s ease 0.6s backwards;
         }
 
         .cta-button {
@@ -106,10 +180,11 @@
             font-weight: bold;
             display: inline-block;
             text-decoration: none;
+            animation: scaleIn 0.6s ease 0.9s backwards;
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.05);
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
         }
 
@@ -142,11 +217,24 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
             border-top: 4px solid var(--primary-red);
+            animation: fadeInUp 0.6s ease backwards;
+        }
+
+        .about-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .about-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .about-card:nth-child(3) {
+            animation-delay: 0.6s;
         }
 
         .about-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.2);
         }
 
         .about-card h3 {
@@ -174,6 +262,23 @@
             font-size: 3rem;
             color: var(--gold);
             margin-bottom: 0.5rem;
+            animation: scaleIn 0.8s ease backwards;
+        }
+
+        .stat-item:nth-child(1) h2 {
+            animation-delay: 0.2s;
+        }
+
+        .stat-item:nth-child(2) h2 {
+            animation-delay: 0.4s;
+        }
+
+        .stat-item:nth-child(3) h2 {
+            animation-delay: 0.6s;
+        }
+
+        .stat-item:nth-child(4) h2 {
+            animation-delay: 0.8s;
         }
 
         .stat-item p {
@@ -193,11 +298,13 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.6s ease backwards;
         }
 
         .facility-card:hover {
-            transform: scale(1.03);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.2);
         }
 
         .facility-image {
@@ -349,6 +456,15 @@
             overflow: hidden;
             box-shadow: 0 5px 25px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.6s ease backwards;
+        }
+
+        .achievement-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .achievement-card:nth-child(2) {
+            animation-delay: 0.4s;
         }
 
         .achievement-card:hover {
@@ -398,17 +514,100 @@
             min-height: 400px;
         }
 
+        .neet-jee-section {
+            background: white;
+            padding: 80px 5%;
+            margin: 40px auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        .neet-jee-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .neet-jee-image {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.2);
+            animation: slideInLeft 1s ease;
+        }
+
+        .neet-jee-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .neet-jee-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .neet-jee-content {
+            padding: 2rem;
+            animation: slideInRight 1s ease;
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                letter-spacing: 1px;
             }
 
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1rem;
+                padding: 0 1rem;
             }
 
             .nav-links {
                 display: none;
+            }
+
+            .logo {
+                font-size: 1rem;
+            }
+
+            .navbar {
+                padding: 1rem 3%;
+            }
+
+            .hero {
+                padding: 120px 5% 60px;
+            }
+
+            .section {
+                padding: 50px 5%;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .stat-item h2 {
+                font-size: 2rem;
+            }
+
+            .facilities-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .message-content {
@@ -419,8 +618,46 @@
                 height: 250px;
             }
 
+            .message-section {
+                padding: 40px 5%;
+                margin: 40px auto;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
             .achievements-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .neet-jee-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .neet-jee-content {
+                padding: 1rem;
+            }
+
+            .neet-jee-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .neet-jee-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -626,16 +863,6 @@
                 <div class="achievement-content">
                     <h3>🥈 Poothalam 25 - Team Azure (Runners-Up)</h3>
                     <p>Team Azure demonstrated outstanding performance and determination, earning the runners-up position. Their dedication reflects the competitive spirit we nurture at Emerald.</p>
-                </div>
-            </div>
-
-            <div class="achievement-card">
-                <div class="achievement-image">
-                    <img src="images/neet-jee.jpg" alt="NEET & JEE Foundation Launch">
-                </div>
-                <div class="achievement-content">
-                    <h3>🎓 NEET & JEE Foundation Launched</h3>
-                    <p><strong>Strong foundation today, brighter success tomorrow.</strong> We're proud to launch our NEET & JEE Foundation program - preparing future doctors and engineers with expert guidance and comprehensive training.</p>
                 </div>
             </div>
         </div>
