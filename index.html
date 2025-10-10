@@ -1314,19 +1314,19 @@
     </footer>
 
     <!-- Floating Admission Button -->
-    <button class="floating-admission-btn" onclick="openAdmissionForm()">Apply Now</button>
+    <button class="floating-admission-btn" id="applyNowBtn">Apply Now</button>
 
     <!-- Admission Form Modal -->
     <div class="admission-modal" id="admissionModal">
         <div class="admission-form-container">
-            <button class="close-modal" onclick="closeAdmissionForm()">×</button>
+            <button class="close-modal" id="closeModalBtn">×</button>
             
             <div class="admission-form-header">
                 <h2>Admission Enquiry Form</h2>
                 <p>Begin your child's journey to excellence</p>
             </div>
 
-            <form id="admissionForm" onsubmit="submitAdmissionForm(event)">
+            <form id="admissionForm">
                 <div class="form-group">
                     <label>Student Name <span>*</span></label>
                     <input type="text" name="studentName" required placeholder="Enter student's full name">
@@ -1394,57 +1394,83 @@
     </div>
 
     <script>
-        // Admission Form Functions
-        function openAdmissionForm() {
-            const modal = document.getElementById('admissionModal');
-            if (modal) {
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeAdmissionForm() {
-            const modal = document.getElementById('admissionModal');
-            if (modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Initialize modal event listeners when DOM is ready
+        // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            // Close modal when clicking outside
-            const modal = document.getElementById('admissionModal');
-            if (modal) {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        closeAdmissionForm();
+            console.log('Page loaded - Initializing admission form...');
+            
+            // Get elements
+            const applyNowBtn = document.getElementById('applyNowBtn');
+            const admissionModal = document.getElementById('admissionModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const admissionForm = document.getElementById('admissionForm');
+            
+            console.log('Button found:', applyNowBtn);
+            console.log('Modal found:', admissionModal);
+            
+            // Open modal when clicking Apply Now button
+            if (applyNowBtn) {
+                applyNowBtn.addEventListener('click', function() {
+                    console.log('Apply Now button clicked!');
+                    if (admissionModal) {
+                        admissionModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                        console.log('Modal opened');
                     }
                 });
             }
-
+            
+            // Close modal when clicking X button
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', function() {
+                    console.log('Close button clicked');
+                    if (admissionModal) {
+                        admissionModal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+            
+            // Close modal when clicking outside
+            if (admissionModal) {
+                admissionModal.addEventListener('click', function(e) {
+                    if (e.target === admissionModal) {
+                        console.log('Clicked outside modal');
+                        admissionModal.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+            
             // Close modal with Escape key
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeAdmissionForm();
+                if (e.key === 'Escape' && admissionModal && admissionModal.classList.contains('active')) {
+                    console.log('Escape key pressed');
+                    admissionModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
                 }
             });
+            
+            // Handle form submission
+            if (admissionForm) {
+                admissionForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    console.log('Form submitted');
+                    
+                    // Get form data
+                    const formData = new FormData(admissionForm);
+                    const data = Object.fromEntries(formData);
+                    console.log('Form data:', data);
+                    
+                    // Show success message
+                    alert('Thank you for your interest in Emerald International School!\n\nWe have received your enquiry and will contact you within 24 hours to schedule a campus visit.');
+                    
+                    // Reset form and close modal
+                    admissionForm.reset();
+                    admissionModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
         });
-
-        function submitAdmissionForm(event) {
-            event.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            
-            // Show success message
-            alert('Thank you for your interest in Emerald International School!\n\nWe have received your enquiry and will contact you within 24 hours to schedule a campus visit.');
-            
-            // Reset form and close modal
-            event.target.reset();
-            closeAdmissionForm();
-        }
 
         // Smooth scroll animation on scroll
         const observerOptions = {
