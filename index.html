@@ -94,6 +94,155 @@
             font-size: 1.2rem;
         }
 
+        /* Admission Form Modal */
+        .admission-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .admission-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admission-form-container {
+            background: white;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: scaleIn 0.4s ease;
+            margin: 20px auto;
+        }
+
+        .admission-form-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--primary-red);
+            padding-bottom: 20px;
+        }
+
+        .admission-form-header h2 {
+            color: var(--primary-red);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .admission-form-header p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            background: var(--secondary-red);
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-group label span {
+            color: var(--light-red);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Georgia', serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);
+        }
+
+        .form-note {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -759,6 +908,28 @@
                 font-size: 0.9rem;
             }
 
+            .admission-form-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            .admission-form-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .close-modal {
+                top: 15px;
+                right: 15px;
+                width: 30px;
+                height: 30px;
+                font-size: 1.2rem;
+            }
+
             .hero {
                 margin-top: 104px;
             }
@@ -1142,9 +1313,133 @@
     </footer>
 
     <!-- Floating Admission Button -->
-    <a href="#admissions" class="floating-admission-btn">Apply Now</a>
+    <button class="floating-admission-btn" onclick="openAdmissionForm()">Apply Now</button>
+
+    <!-- Admission Form Modal -->
+    <div class="admission-modal" id="admissionModal">
+        <div class="admission-form-container">
+            <button class="close-modal" onclick="closeAdmissionForm()">×</button>
+            
+            <div class="admission-form-header">
+                <h2>Admission Enquiry Form</h2>
+                <p>Begin your child's journey to excellence</p>
+            </div>
+
+            <form id="admissionForm" onsubmit="submitAdmissionForm(event)">
+                <div class="form-group">
+                    <label>Student Name <span>*</span></label>
+                    <input type="text" name="studentName" required placeholder="Enter student's full name">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date of Birth <span>*</span></label>
+                        <input type="date" name="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Grade Applying For <span>*</span></label>
+                        <select name="grade" required>
+                            <option value="">Select Grade</option>
+                            <option value="nursery">Nursery</option>
+                            <option value="lkg">LKG</option>
+                            <option value="ukg">UKG</option>
+                            <option value="1">Class 1</option>
+                            <option value="2">Class 2</option>
+                            <option value="3">Class 3</option>
+                            <option value="4">Class 4</option>
+                            <option value="5">Class 5</option>
+                            <option value="6">Class 6</option>
+                            <option value="7">Class 7</option>
+                            <option value="8">Class 8</option>
+                            <option value="9">Class 9</option>
+                            <option value="10">Class 10</option>
+                            <option value="11">Class 11</option>
+                            <option value="12">Class 12</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Parent/Guardian Name <span>*</span></label>
+                    <input type="text" name="parentName" required placeholder="Enter parent's full name">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email Address <span>*</span></label>
+                        <input type="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number <span>*</span></label>
+                        <input type="tel" name="phone" required placeholder="+91 XXXXX XXXXX" pattern="[0-9+\s-]+">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Address</label>
+                    <textarea name="address" placeholder="Enter your complete address"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Message / Special Requirements</label>
+                    <textarea name="message" placeholder="Any specific questions or requirements..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Enquiry</button>
+                
+                <p class="form-note">We will contact you within 24 hours to schedule a campus visit.</p>
+            </form>
+        </div>
+    </div>
 
     <script>
+        // Admission Form Functions
+        function openAdmissionForm() {
+            document.getElementById('admissionModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAdmissionForm() {
+            document.getElementById('admissionModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('admissionModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAdmissionForm();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAdmissionForm();
+            }
+        });
+
+        function submitAdmissionForm(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would normally send this to a server
+            // For now, we'll show a success message
+            alert('Thank you for your interest! We have received your enquiry and will contact you within 24 hours.');
+            
+            // Reset form and close modal
+            event.target.reset();
+            closeAdmissionForm();
+            
+            // You can integrate with services like:
+            // - Google Forms
+            // - EmailJS
+            // - Your backend API
+            // Example: emailjs.send('service_id', 'template_id', data);
+        }
+
         // Smooth scroll animation on scroll
         const observerOptions = {
             threshold: 0.15,
