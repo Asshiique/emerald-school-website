@@ -149,6 +149,15 @@
             }
         }
 
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
         @keyframes pulse {
             0%, 100% {
                 transform: scale(1);
@@ -156,6 +165,29 @@
             50% {
                 transform: scale(1.05);
             }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .animate-delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .animate-delay-3 {
+            transition-delay: 0.6s;
         }
 
         .navbar {
@@ -509,12 +541,6 @@
             border-radius: 10px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.4s;
-        }
-
-        .why-card:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
         }
 
         .why-card h3 {
@@ -731,7 +757,6 @@
 
             .hero {
                 margin-top: 104px;
-                padding: 120px 5% 60px;
             }
 
             .hero h1 {
@@ -754,6 +779,10 @@
 
             .navbar {
                 padding: 1rem 3%;
+            }
+
+            .hero {
+                padding: 120px 5% 60px;
             }
 
             .section {
@@ -816,11 +845,11 @@
             }
 
             .neet-jee-content h2 {
-                font-size: 1.8rem !important;
+                font-size: 1.8rem;
             }
 
             .neet-jee-content h3 {
-                font-size: 1.2rem !important;
+                font-size: 1.2rem;
             }
 
             .footer-content {
@@ -913,20 +942,20 @@
 
     <section class="stats">
         <div class="stats-grid">
-            <div class="stat-item" data-target="250">
-                <h2>0+</h2>
+            <div class="stat-item">
+                <h2>250+</h2>
                 <p>Students Enrolled</p>
             </div>
-            <div class="stat-item" data-target="25">
-                <h2>0+</h2>
+            <div class="stat-item">
+                <h2>25+</h2>
                 <p>Dedicated Faculty</p>
             </div>
-            <div class="stat-item" data-target="98">
-                <h2>0%</h2>
+            <div class="stat-item">
+                <h2>98%</h2>
                 <p>Parent Satisfaction</p>
             </div>
-            <div class="stat-item" data-target="50">
-                <h2>0+</h2>
+            <div class="stat-item">
+                <h2>50+</h2>
                 <p>Annual Achievements</p>
             </div>
         </div>
@@ -945,3 +974,301 @@
             <div class="facility-card">
                 <div class="facility-image">📚</div>
                 <div class="facility-content">
+                    <h3>Digital Library</h3>
+                    <p>Comprehensive collection of resources with digital access, supporting research and lifelong learning.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image">💻</div>
+                <div class="facility-content">
+                    <h3>Technology Center</h3>
+                    <p>Advanced computer labs with high-speed connectivity preparing students for the digital age.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image">⚽</div>
+                <div class="facility-content">
+                    <h3>Sports Complex</h3>
+                    <p>Extensive athletic facilities including courts, fields, and indoor sports areas promoting physical excellence.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image">🎨</div>
+                <div class="facility-content">
+                    <h3>Arts Studios</h3>
+                    <p>Dedicated spaces for music, dance, and visual arts encouraging creative expression and artistic development.</p>
+                </div>
+            </div>
+            <div class="facility-card">
+                <div class="facility-image">🚌</div>
+                <div class="facility-content">
+                    <h3>Safe Transportation</h3>
+                    <p>Comprehensive bus service with GPS tracking ensuring secure and convenient commute for all students.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="message-section">
+        <div class="message-content">
+            <div class="message-image">🎓</div>
+            <div class="message-text">
+                <h3>MESSAGE FROM THE PRINCIPAL</h3>
+                <h4>Inspiring Excellence, Building Character</h4>
+                <p>
+                    Education is the cornerstone of civilization, the foundation upon which we build not merely careers, but lives of purpose and meaning. At Emerald International School, we embrace the profound responsibility of shaping young minds, nurturing their intellectual curiosity, and cultivating the moral courage necessary to lead with integrity in an ever-changing world.
+                </p>
+                <p>
+                    Our commitment extends beyond academic achievement to the development of character, wisdom, and compassion. We believe that true education awakens the human spirit, inspires noble aspirations, and empowers individuals to contribute meaningfully to society. As Aristotle wisely observed, "Educating the mind without educating the heart is no education at all."
+                </p>
+                <p>
+                    Together with our distinguished faculty and engaged families, we create an environment where excellence is not merely pursued but embodied, where every student is encouraged to discover their unique potential and cultivate the virtues that will guide them throughout their lives.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <section class="why-choose">
+        <h2 class="section-title" style="color: white;">Why Choose Emerald</h2>
+        <div class="why-grid">
+            <div class="why-card">
+                <h3>Distinguished Faculty</h3>
+                <p>Our accomplished educators bring passion, expertise, and dedication to every classroom, inspiring students to reach their highest potential.</p>
+            </div>
+            <div class="why-card">
+                <h3>Proven Excellence</h3>
+                <p>A track record of outstanding academic results and alumni success across leading universities worldwide.</p>
+            </div>
+            <div class="why-card">
+                <h3>Holistic Development</h3>
+                <p>Comprehensive programs addressing intellectual, physical, artistic, and emotional growth.</p>
+            </div>
+            <div class="why-card">
+                <h3>Values-Based Education</h3>
+                <p>Strong emphasis on ethics, integrity, and social responsibility preparing students for ethical leadership.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="achievements">
+        <h2 class="section-title">Recent Achievements & Events</h2>
+        
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <div class="achievement-image">
+                    <img src="images/poothalam-champions.jpg" alt="Poothalam 25 Champions">
+                </div>
+                <div class="achievement-content">
+                    <h3>🏆 Poothalam 25 - Team Champions</h3>
+                    <p>Our talented students showcased exceptional teamwork and spirit, securing the championship trophy at Poothalam 25. A proud moment celebrating our commitment to holistic excellence!</p>
+                </div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-image">
+                    <img src="images/poothalam-runners.jpg" alt="Poothalam 25 Runners Up">
+                </div>
+                <div class="achievement-content">
+                    <h3>🥈 Poothalam 25 - Team Azure (Runners-Up)</h3>
+                    <p>Team Azure demonstrated outstanding performance and determination, earning the runners-up position. Their dedication reflects the competitive spirit we nurture at Emerald.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section instagram-section">
+        <h2 class="section-title">Follow Our Journey</h2>
+        <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">
+            Stay connected with daily updates, achievements, and campus life on Instagram
+        </p>
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <a href="https://www.instagram.com/emeraldinternational_schoolmkd/" target="_blank" class="cta-button">
+                📸 Follow @emeraldinternational_schoolmkd
+            </a>
+        </div>
+        
+        <div class="instagram-embed">
+            <!-- Elfsight Instagram Feed -->
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-6fbd955b-97e3-41fe-ad77-ab725d0af88f" data-elfsight-app-lazy></div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <h2 class="section-title">Visit Our Campus</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                We invite you to experience the Emerald difference firsthand. Schedule a campus tour and discover why families trust us with their children's education.
+            </p>
+            <a href="admissions.html" class="cta-button">Schedule a Visit</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h3>Emerald International School</h3>
+                <p>Mannarkkad, Kerala</p>
+                <p>Excellence in Education Since Foundation</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <a href="#about">About Us</a>
+                <a href="#academics">Academics</a>
+                <a href="admissions.html">Admissions</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div>
+                <h3>Connect With Us</h3>
+                <a href="#">Facebook</a>
+                <a href="https://www.instagram.com/emeraldinternational_schoolmkd/" target="_blank">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">YouTube</a>
+            </div>
+            <div>
+                <h3>Contact Information</h3>
+                <p>Email: info@emeraldinternational.edu</p>
+                <p>Phone: +91 XXXX XXXXXX</p>
+                <p>Mannarkkad, Kerala, India</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Emerald International School Mannarkkad. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Admission Button -->
+    <a href="admissions.html" class="floating-admission-btn">Apply Now</a>
+
+    <script>
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initAnimations();
+            document.querySelectorAll('.stat-item').forEach(el => {
+                statsObserver.observe(el);
+            });
+        });
+
+        // Also initialize on window load (backup)
+        window.addEventListener('load', () => {
+            initAnimations();
+        });
+
+        // Smooth scroll animation on scroll
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations when DOM is loaded
+        function initAnimations() {
+            // Observe section titles
+            document.querySelectorAll('.section-title').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Observe cards
+            document.querySelectorAll('.about-card').forEach(el => {
+                observer.observe(el);
+            });
+            
+            document.querySelectorAll('.facility-card').forEach(el => {
+                observer.observe(el);
+            });
+            
+            document.querySelectorAll('.achievement-card').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Observe stats
+            document.querySelectorAll('.stat-item').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Observe message section
+            document.querySelectorAll('.message-section').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Observe NEET/JEE section
+            const neetJeeImage = document.querySelector('.neet-jee-image');
+            const neetJeeContent = document.querySelector('.neet-jee-content');
+            if (neetJeeImage) observer.observe(neetJeeImage);
+            if (neetJeeContent) observer.observe(neetJeeContent);
+        }
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        const navbar = document.querySelector('.navbar');
+        const announcementBar = document.querySelector('.announcement-bar');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+                if (announcementBar) {
+                    announcementBar.style.transform = 'translateY(-100%)';
+                }
+            } else {
+                navbar.classList.remove('scrolled');
+                if (announcementBar) {
+                    announcementBar.style.transform = 'translateY(0)';
+                }
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Counter animation for stats
+        const animateCounter = (element, target) => {
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current) + '+';
+                }
+            }, 30);
+        };
+
+        // Observe stats for counter animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    const target = entry.target.querySelector('h2');
+                    const value = parseInt(target.textContent);
+                    target.textContent = '0+';
+                    animateCounter(target, value);
+                    entry.target.classList.add('counted');
+                }
+            });
+        }, { threshold: 0.5 });
+    </script>
+</body>
+</html>
