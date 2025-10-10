@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions - Emerald International School Mannarkkad</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #8B0000;
+            --secondary-red: #A52A2A;
+            --accent-red: #C41E3A;
+            --cream: #FFF8F0;
+            --gold: #D4AF37;
+            --dark: #1a1a1a;
+            --text-gray: #4a4a4a;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: var(--text-gray);
+            background: var(--cream);
+        }
+
+        .navbar {
+            background: var(--primary-red);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .hero-admission {
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%);
+            padding: 150px 5% 80px;
+            color: white;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero-admission h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-admission p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .admission-info {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+
+        .admission-info h3 {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .admission-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .admission-info ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .admission-info li {
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 50px 0;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step-card h4 {
+            color: var(--primary-red);
+            margin-bottom: 1rem;
+        }
+
+        .form-section {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .form-group label span {
+            color: var(--accent-red);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Georgia', serif;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-red);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);
+        }
+
+        .contact-info {
+            background: var(--primary-red);
+            color: white;
+            padding: 50px;
+            border-radius: 15px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-admission h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .admission-info, .form-section {
+                padding: 30px 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-details {
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">EMERALD INTERNATIONAL SCHOOL</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#academics">Academics</a></li>
+                <li><a href="index.html#facilities">Facilities</a></li>
+                <li><a href="admissions.html">Admissions</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-admission">
+        <h1>ADMISSIONS OPEN 2025-26</h1>
+        <p>Begin your child's journey to excellence. Join a community dedicated to nurturing young minds through academic rigor, character development, and holistic growth.</p>
+    </section>
+
+    <div class="container">
+        <div class="admission-info">
+            <h3>Welcome to Emerald International School</h3>
+            <p>
+                At Emerald International School Mannarkkad, we believe that education is the foundation for a successful future. We are delighted that you are considering our institution for your child's educational journey. Our admission process is designed to be transparent, straightforward, and welcoming.
+            </p>
+            <p>
+                We offer a comprehensive curriculum that balances academic excellence with holistic development, preparing students for the challenges and opportunities of tomorrow.
+            </p>
+        </div>
+
+        <h2 class="section-title">Admission Process</h2>
+        <div class="process-steps">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h4>Enquiry & Registration</h4>
+                <p>Fill out the enquiry form below or visit our campus for a personal tour and interaction with our team.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h4>Submit Application</h4>
+                <p>Complete the admission application form with all required documents and photographs.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h4>Interaction & Assessment</h4>
+                <p>Meet with our admissions team for an informal interaction. Age-appropriate assessments may be conducted.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h4>Admission Confirmation</h4>
+                <p>Upon selection, complete the admission formalities and fee payment to secure your child's seat.</p>
+            </div>
+        </div>
+
+        <div class="admission-info">
+            <h3>Documents Required</h3>
+            <ul>
+                <li>Birth Certificate (Original for verification)</li>
+                <li>Transfer Certificate (TC) from previous school</li>
+                <li>Progress Report / Report Card from previous school</li>
+                <li>Aadhar Card (Student and Parents)</li>
+                <li>Recent passport-sized photographs (4 copies)</li>
+                <li>Address Proof</li>
+                <li>Medical Certificate</li>
+            </ul>
+        </div>
+
+        <div class="admission-info">
+            <h3>Age Criteria</h3>
+            <ul>
+                <li><strong>Nursery:</strong> 3 years as on June 1st</li>
+                <li><strong>LKG:</strong> 4 years as on June 1st</li>
+                <li><strong>UKG:</strong> 5 years as on June 1st</li>
+                <li><strong>Class 1:</strong> 6 years as on June 1st</li>
+            </ul>
+            <p><em>For higher classes, admission is subject to availability of seats and assessment.</em></p>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title">Admission Enquiry Form</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Please fill out the form below and our admissions team will contact you within 24 hours.</p>
+            
+            <form id="admissionForm">
+                <div class="form-group">
+                    <label>Student Name <span>*</span></label>
+                    <input type="text" name="studentName" required placeholder="Enter student's full name">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date of Birth <span>*</span></label>
+                        <input type="date" name="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Grade Applying For <span>*</span></label>
+                        <select name="grade" required>
+                            <option value="">Select Grade</option>
+                            <option value="nursery">Nursery</option>
+                            <option value="lkg">LKG</option>
+                            <option value="ukg">UKG</option>
+                            <option value="1">Class 1</option>
+                            <option value="2">Class 2</option>
+                            <option value="3">Class 3</option>
+                            <option value="4">Class 4</option>
+                            <option value="5">Class 5</option>
+                            <option value="6">Class 6</option>
+                            <option value="7">Class 7</option>
+                            <option value="8">Class 8</option>
+                            <option value="9">Class 9</option>
+                            <option value="10">Class 10</option>
+                            <option value="11">Class 11</option>
+                            <option value="12">Class 12</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Parent/Guardian Name <span>*</span></label>
+                    <input type="text" name="parentName" required placeholder="Enter parent's full name">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email Address <span>*</span></label>
+                        <input type="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number <span>*</span></label>
+                        <input type="tel" name="phone" required placeholder="+91 XXXXX XXXXX">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Current School (if applicable)</label>
+                    <input type="text" name="currentSchool" placeholder="Enter current school name">
+                </div>
+
+                <div class="form-group">
+                    <label>Address <span>*</span></label>
+                    <textarea name="address" required placeholder="Enter your complete address" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Message / Special Requirements</label>
+                    <textarea name="message" placeholder="Any specific questions or requirements..." rows="4"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Enquiry</button>
+            </form>
+        </div>
+
+        <div class="contact-info">
+            <h3>Have Questions? Get in Touch</h3>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <h4>📧 Email</h4>
+                    <p>info@emeraldinternational.edu</p>
+                </div>
+                <div class="contact-item">
+                    <h4>📞 Phone</h4>
+                    <p>+91 XXXX XXXXXX</p>
+                </div>
+                <div class="contact-item">
+                    <h4>📍 Address</h4>
+                    <p>Mannarkkad, Kerala</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest in Emerald International School!\n\nWe have received your enquiry and will contact you within 24 hours.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
