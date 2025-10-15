@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -43,6 +44,18 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             animation: slideDown 0.5s ease;
             transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .announcement-scroll {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scrollText 30s linear infinite;
+        }
+
+        @keyframes scrollText {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
 
         .announcement-bar span {
@@ -199,6 +212,48 @@
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--primary-red);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            padding: 1rem 0;
+        }
+
+        .mobile-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        .mobile-menu .nav-links {
+            flex-direction: column;
+            gap: 0;
+            padding: 0 5%;
+        }
+
+        .mobile-menu .nav-links li {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu .nav-links a {
+            display: block;
+            padding: 1rem 0;
+            font-size: 1.1rem;
         }
 
         .navbar.scrolled {
@@ -226,13 +281,31 @@
             display: flex;
             gap: 2rem;
             list-style: none;
+            transition: all 0.3s ease;
         }
 
         .nav-links a {
             color: white;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
             font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
@@ -246,6 +319,24 @@
             text-align: center;
             margin-top: 104px;
             animation: fadeIn 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="60" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -590,6 +681,709 @@
             opacity: 0.7;
         }
 
+        /* Learning Stages Section */
+        .learning-stages {
+            background: white;
+            padding: 80px 5%;
+        }
+
+        .stages-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stage-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(40px);
+            border-top: 4px solid var(--primary-red);
+        }
+
+        .stage-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stage-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(139, 0, 0, 0.2);
+            border-top-width: 6px;
+        }
+
+        .stage-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            transition: opacity 0.3s ease;
+        }
+
+        .stage-card:hover .stage-image::before {
+            opacity: 0;
+        }
+
+        .stage-content {
+            padding: 2rem;
+        }
+
+        .stage-content h3 {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stage-age {
+            color: var(--secondary-red);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, var(--cream) 0%, #f8f8f8 100%);
+            padding: 80px 5%;
+        }
+
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .testimonial-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.15);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--primary-red);
+            opacity: 0.3;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            color: var(--primary-red);
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: white;
+            padding: 80px 5%;
+        }
+
+        .gallery-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        .gallery-item.animated {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(139, 0, 0, 0.8), rgba(165, 42, 42, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Events Timeline */
+        .events-section {
+            background: linear-gradient(135deg, var(--cream) 0%, #f8f8f8 100%);
+            padding: 80px 5%;
+        }
+
+        .events-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .events-timeline {
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        .events-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary-red);
+            transform: translateX(-50%);
+        }
+
+        .event-item {
+            position: relative;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .event-item.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .event-item:nth-child(odd) .event-content {
+            margin-left: 55%;
+            text-align: left;
+        }
+
+        .event-item:nth-child(even) .event-content {
+            margin-right: 55%;
+            text-align: right;
+        }
+
+        .event-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .event-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.15);
+        }
+
+        .event-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border: 15px solid transparent;
+            transform: translateY(-50%);
+        }
+
+        .event-item:nth-child(odd) .event-content::before {
+            left: -30px;
+            border-right-color: white;
+        }
+
+        .event-item:nth-child(even) .event-content::before {
+            right: -30px;
+            border-left-color: white;
+        }
+
+        .event-date {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary-red);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-align: center;
+            min-width: 80px;
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+        }
+
+        .event-type {
+            color: var(--secondary-red);
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-title {
+            color: var(--primary-red);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-description {
+            line-height: 1.6;
+            color: var(--text-gray);
+        }
+
+        /* Management Messages Section */
+        .management-section {
+            background: white;
+            padding: 80px 5%;
+        }
+
+        .management-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .management-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(40px);
+            border-top: 4px solid var(--primary-red);
+        }
+
+        .management-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .management-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(139, 0, 0, 0.2);
+            border-top-width: 6px;
+        }
+
+        .management-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .management-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.1);
+            transition: opacity 0.3s ease;
+        }
+
+        .management-card:hover .management-image::before {
+            opacity: 0;
+        }
+
+        .management-content {
+            padding: 2.5rem;
+        }
+
+        .management-content h3 {
+            color: var(--primary-red);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .management-content h4 {
+            color: var(--secondary-red);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        .management-content p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .management-signature {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(139, 0, 0, 0.1);
+            text-align: right;
+        }
+
+        .management-signature .name {
+            color: var(--primary-red);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .management-signature .title {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            background: linear-gradient(135deg, var(--cream) 0%, #f8f8f8 100%);
+            padding: 80px 5%;
+        }
+
+        .partners-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .partner-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .partner-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.15);
+        }
+
+        .partner-logo {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .partner-card:hover .partner-logo {
+            transform: scale(1.05);
+        }
+
+        .partner-name {
+            color: var(--primary-red);
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .partner-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Enhanced Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #2a2a2a 100%);
+            color: white;
+            padding: 80px 5% 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="80" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="40" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/></svg>') repeat;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 0;
+        }
+
+        .footer-links a::before {
+            content: '→';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 20px;
+        }
+
+        .footer-links a:hover::before {
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--gold);
+            color: var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .newsletter h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 12px 25px;
+            background: var(--gold);
+            color: var(--primary-red);
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: #FFD700;
+            transform: translateY(-2px);
+        }
+
         .achievements-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -769,8 +1563,12 @@
                 padding: 0 1rem;
             }
 
-            .nav-links {
+            .nav-links:not(.mobile-menu .nav-links) {
                 display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
             }
 
             .logo {
@@ -852,6 +1650,59 @@
                 font-size: 1.2rem;
             }
 
+            .stages-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+
+            .events-timeline::before {
+                left: 20px;
+            }
+
+            .event-item:nth-child(odd) .event-content,
+            .event-item:nth-child(even) .event-content {
+                margin-left: 60px;
+                margin-right: 0;
+                text-align: left;
+            }
+
+            .event-content::before {
+                left: -30px !important;
+                right: auto !important;
+                border-right-color: white !important;
+                border-left-color: transparent !important;
+            }
+
+            .event-date {
+                left: 20px;
+                transform: translate(-50%, -50%);
+            }
+
+            .management-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -868,7 +1719,11 @@
     <!-- Announcement Bar -->
     <div class="announcement-bar">
         <span>📢</span>
-        <strong>Admissions Open 2025-26!</strong> Enroll your child in excellence. Limited seats available. Contact us today!
+        <div class="announcement-scroll">
+            <strong>Admissions Open 2025-26!</strong> Enroll your child in excellence. Limited seats available. Contact us today! • 
+            <strong>NEET & JEE Foundation Program</strong> Now accepting applications for competitive exam preparation • 
+            <strong>Campus Tours Available</strong> Schedule your visit today and discover the Emerald difference •
+        </div>
     </div>
 
     <nav class="navbar">
@@ -879,16 +1734,34 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#academics">Academics</a></li>
                 <li><a href="#facilities">Facilities</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="admissions.html">Admissions</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+            <div class="mobile-menu" id="mobileMenu">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#academics">Academics</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <section class="hero" id="home">
-        <h1>WELCOME TO EMERALD INTERNATIONAL SCHOOL</h1>
-        <p>At Emerald International School Mannarkkad, we cultivate excellence through a commitment to academic rigor, character development, and innovative thinking. Our distinguished institution empowers students to become ethical leaders and compassionate global citizens prepared for the challenges of tomorrow.</p>
-        <a href="admissions.html" class="cta-button">Begin Your Journey</a>
+        <div class="hero-content">
+            <h1>WELCOME TO EMERALD INTERNATIONAL SCHOOL</h1>
+            <p>At Emerald International School Mannarkkad, we cultivate excellence through a commitment to academic rigor, character development, and innovative thinking. Our distinguished institution empowers students to become ethical leaders and compassionate global citizens prepared for the challenges of tomorrow.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                <a href="admissions.html" class="cta-button">Begin Your Journey</a>
+                <a href="#about" class="cta-button" style="background: transparent; border: 2px solid var(--gold);">Learn More</a>
+            </div>
+        </div>
     </section>
 
     <section class="section" id="about">
@@ -961,6 +1834,134 @@
         </div>
     </section>
 
+    <!-- Learning Stages Section -->
+    <section class="learning-stages" id="learning-stages">
+        <div class="stages-container">
+            <h2 class="section-title">How We Learn</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem; color: var(--text-gray);">
+                Our learning approach is designed to foster creativity and innovation. We believe in providing a dynamic and engaging environment for our students, where they can explore their interests and develop their skills.
+            </p>
+            <div class="stages-grid">
+                <div class="stage-card">
+                    <div class="stage-image">🌟</div>
+                    <div class="stage-content">
+                        <div class="stage-age">FOUNDATIONAL STAGE - 3-8 YEARS</div>
+                        <h3>Nurturing Young Minds</h3>
+                        <p>In the primary years, the young mind's curiosity runs high. They constantly explore and experiment. Hence the primary year's program should foster appropriate skills and abilities to enable the optimum development of a child according to their age, ability and aptitude.</p>
+                    </div>
+                </div>
+                <div class="stage-card">
+                    <div class="stage-image">📚</div>
+                    <div class="stage-content">
+                        <div class="stage-age">PREPARATORY STAGE - 9-11 YEARS</div>
+                        <h3>Building Strong Foundations</h3>
+                        <p>The prep school is a period of preparation for the school year. It is a time when the students are introduced to the academic and social environment of the school. The curriculum is designed to prepare them for the academic year with strong foundational skills.</p>
+                    </div>
+                </div>
+                <div class="stage-card">
+                    <div class="stage-image">🎯</div>
+                    <div class="stage-content">
+                        <div class="stage-age">MIDDLE STAGE - 12-14 YEARS</div>
+                        <h3>Developing Critical Thinking</h3>
+                        <p>The primary years are a crucial period in a child's development, laying the foundation for their future education. We focus on promoting physical and mental development, ensuring a healthy and active lifestyle while preparing students for CBSE curriculum.</p>
+                    </div>
+                </div>
+                <div class="stage-card">
+                    <div class="stage-image">🚀</div>
+                    <div class="stage-content">
+                        <div class="stage-age">SECONDARY STAGE - 15-18 YEARS</div>
+                        <h3>Preparing for Excellence</h3>
+                        <p>During these years, we focus on preparing students for their transition into higher education, aligning with their individual interests, aptitudes, and strengths. Our educational approach prioritizes development for CBSE curriculum and beyond.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title" style="color: var(--primary-red);">Testimonials</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 3rem; font-size: 1.1rem; color: var(--text-gray);">
+                Don't take our word for it, take theirs. Discover heartfelt experiences shared by our students, parents, and community.
+            </p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        Emerald International School has been an exceptional learning environment for my child. The teachers are incredibly friendly and supportive, providing personalized attention that fosters growth and confidence.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <h4>Ms. Sarah Vijeesh</h4>
+                            <p>Parent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The positive environment and the parent-facilitator communication have been excellent. I am grateful for the faculty's support and cooperation in nurturing my child's potential.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <h4>Ms. Rintu Raju</h4>
+                            <p>Parent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The campus environment is safe, welcoming, and vibrant. The school also takes great care in providing nutritious and hygienic food, ensuring that students are healthy and energized throughout the day.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">H</div>
+                        <div class="author-info">
+                            <h4>Ms. Harsha</h4>
+                            <p>Parent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        I find the syllabus to be appropriately paced, ensuring that the children are not burdened. This allows for the tension-free development of their confidence, ultimately fostering their unique skills.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">N</div>
+                        <div class="author-info">
+                            <h4>Dr. Naila</h4>
+                            <p>Parent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        My daughter has been a part of Emerald for nearly 5 years now. I can gladly say that I am proud to see her progress. The positive environment created and the parent-teacher communication continues to bring results.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">J</div>
+                        <div class="author-info">
+                            <h4>Ms. Jasmin M P</h4>
+                            <p>Parent</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The teachers at Emerald have helped me discover my passion for learning. The supportive environment and innovative teaching methods have made my academic journey truly enriching.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">F</div>
+                        <div class="author-info">
+                            <h4>Fatima Noushi</h4>
+                            <p>Alumna</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="section" id="facilities">
         <h2 class="section-title">World-Class Facilities</h2>
         <div class="facilities-grid">
@@ -1009,26 +2010,57 @@
         </div>
     </section>
 
-    <div class="message-section">
-        <div class="message-content">
-            <div class="message-image">
-                <img src="images/PRINCIPAL.jpeg">
-            </div>
-            <div class="message-text">
-                <h3>MESSAGE FROM THE PRINCIPAL</h3>
-                <h4>Inspiring Excellence, Building Character</h4>
-                <p>
-                    Education is the cornerstone of civilization, the foundation upon which we build not merely careers, but lives of purpose and meaning. At Emerald International School, we embrace the profound responsibility of shaping young minds, nurturing their intellectual curiosity, and cultivating the moral courage necessary to lead with integrity in an ever-changing world.
-                </p>
-                <p>
-                    Our commitment extends beyond academic achievement to the development of character, wisdom, and compassion. We believe that true education awakens the human spirit, inspires noble aspirations, and empowers individuals to contribute meaningfully to society. As Aristotle wisely observed, "Educating the mind without educating the heart is no education at all."
-                </p>
-                <p>
-                    Together with our distinguished faculty and engaged families, we create an environment where excellence is not merely pursued but embodied, where every student is encouraged to discover their unique potential and cultivate the virtues that will guide them throughout their lives.
-                </p>
+    <!-- Management Messages Section -->
+    <section class="management-section" id="management">
+        <div class="management-container">
+            <h2 class="section-title">Leadership Messages</h2>
+            <div class="management-grid">
+                <div class="management-card">
+                    <div class="management-image">
+                        <img src="images/PRINCIPAL.jpeg" alt="Principal" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="management-content">
+                        <h3>MESSAGE FROM THE PRINCIPAL</h3>
+                        <h4>Inspiring Excellence, Building Character</h4>
+                        <p>
+                            Education is the cornerstone of civilization, the foundation upon which we build not merely careers, but lives of purpose and meaning. At Emerald International School, we embrace the profound responsibility of shaping young minds, nurturing their intellectual curiosity, and cultivating the moral courage necessary to lead with integrity in an ever-changing world.
+                        </p>
+                        <p>
+                            Our commitment extends beyond academic achievement to the development of character, wisdom, and compassion. We believe that true education awakens the human spirit, inspires noble aspirations, and empowers individuals to contribute meaningfully to society. As Aristotle wisely observed, "Educating the mind without educating the heart is no education at all."
+                        </p>
+                        <p>
+                            Together with our distinguished faculty and engaged families, we create an environment where excellence is not merely pursued but embodied, where every student is encouraged to discover their unique potential and cultivate the virtues that will guide them throughout their lives.
+                        </p>
+                        <div class="management-signature">
+                            <div class="name">Principal</div>
+                            <div class="title">Emerald International School</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="management-card">
+                    <div class="management-image">👨‍🏫</div>
+                    <div class="management-content">
+                        <h3>MESSAGE FROM THE ACADEMIC COORDINATOR</h3>
+                        <h4>Building Strong Foundations in Learning</h4>
+                        <p>
+                            Academics are the stepping stones that help every child discover their strengths and shape their future. At Emerald, our focus is to make learning engaging, purposeful, and student-centered. Beyond achieving grades, we want our learners to develop clarity of thought, confidence in expression, and consistency in effort.
+                        </p>
+                        <p>
+                            Our classrooms are places where curiosity is encouraged, mistakes are accepted as part of growth, and knowledge is connected with real-life experiences. Through careful planning, innovative teaching strategies, and regular academic support, we strive to ensure that each child progresses at their own pace while staying motivated to reach higher goals.
+                        </p>
+                        <p>
+                            Academics at Emerald are not just about preparation for examinations but preparation for life. With dedication from teachers and commitment from students, we believe every learner can unlock their potential and move closer to excellence. Together, we will continue to uphold high standards of learning and nurture achievers who are ready for tomorrow's challenges.
+                        </p>
+                        <div class="management-signature">
+                            <div class="name">Academic Coordinator</div>
+                            <div class="title">Emerald International School</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <section class="why-choose">
         <h2 class="section-title" style="color: white;">Why Choose Emerald</h2>
@@ -1052,27 +2084,120 @@
         </div>
     </section>
 
-    <section class="section" id="achievements">
-        <h2 class="section-title">Recent Achievements & Events</h2>
-        
-        <div class="achievements-grid">
-            <div class="achievement-card">
-                <div class="achievement-image">
-                    <img src="images/poothalam-champions.jpg" alt="Poothalam 25 Champions">
+    <!-- Campus Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-container">
+            <h2 class="section-title">Explore Our Vibrant Campus</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem; color: var(--text-gray);">
+                Step into our vibrant campus, where modern facilities and a nurturing community inspire creativity, collaboration, and leadership.
+            </p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/neet-jee.jpg" alt="Science Laboratory">
+                    <div class="gallery-overlay">Science Laboratory</div>
                 </div>
-                <div class="achievement-content">
-                    <h3>🏆 Poothalam 25 - Team Champions</h3>
-                    <p>Our talented students showcased exceptional teamwork and spirit, securing the championship trophy at Poothalam 25. A proud moment celebrating our commitment to holistic excellence!</p>
+                <div class="gallery-item">
+                    <img src="images/poothalam-champions.jpg" alt="Sports Complex">
+                    <div class="gallery-overlay">Sports Complex</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/poothalam-runners.jpg" alt="Library">
+                    <div class="gallery-overlay">Digital Library</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/PRINCIPAL.jpeg" alt="Principal's Office">
+                    <div class="gallery-overlay">Principal's Office</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/neet-jee.jpg" alt="Computer Lab">
+                    <div class="gallery-overlay">Computer Laboratory</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/poothalam-champions.jpg" alt="Playground">
+                    <div class="gallery-overlay">Playground</div>
                 </div>
             </div>
+            <div class="gallery-cta">
+                <a href="admissions.html" class="cta-button">Schedule Campus Tour</a>
+            </div>
+        </div>
+    </section>
 
-            <div class="achievement-card">
-                <div class="achievement-image">
-                    <img src="images/poothalam-runners.jpg" alt="Poothalam 25 Runners Up">
+    <!-- Events Timeline Section -->
+    <section class="events-section" id="events">
+        <div class="events-container">
+            <h2 class="section-title" style="color: var(--primary-red);">Events and Achievements</h2>
+            <div class="events-timeline">
+                <div class="event-item">
+                    <div class="event-date">
+                        <div>May</div>
+                        <div>12</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-type">Achievement</div>
+                        <h3 class="event-title">100% Pass in CBSE Grade 10</h3>
+                        <p class="event-description">"Another feather in Emerald crown" - Our students achieved 100% pass rate in CBSE Grade 10 examinations, demonstrating our commitment to academic excellence.</p>
+                    </div>
                 </div>
-                <div class="achievement-content">
-                    <h3>🥈 Poothalam 25 - Team Azure (Runners-Up)</h3>
-                    <p>Team Azure demonstrated outstanding performance and determination, earning the runners-up position. Their dedication reflects the competitive spirit we nurture at Emerald.</p>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <div>Jan</div>
+                        <div>31</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-type">Event</div>
+                        <h3 class="event-title">KG Sports Day</h3>
+                        <p class="event-description">The Emerald KG sports day was a joyous celebration of teamwork, sportsmanship and fun with our children shining brightly, parents cheering them on and facilitators providing invaluable support.</p>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <div>Feb</div>
+                        <div>09</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-type">Event</div>
+                        <h3 class="event-title">Empowering Assistant Staff</h3>
+                        <p class="event-description">We appreciate the valuable contribution of Dr Dafniya Jaleel (Oral Pathologist) and proud parent of our school community, who shared her expertise to empower our assistant staff.</p>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <div>Feb</div>
+                        <div>23</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-type">Event</div>
+                        <h3 class="event-title">KG Graduation Ceremony</h3>
+                        <p class="event-description">With curiosity in their hearts and a smile on their faces, our KG graduates embark on a journey that will take them to new heights and new triumphs.</p>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <div>Jan</div>
+                        <div>27</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-type">Event</div>
+                        <h3 class="event-title">Children's Art Show</h3>
+                        <p class="event-description">Drishyam the children's art show was an inspiration for everyone to appreciate the beauty of childhood imagination and the boundless potential of young artists.</p>
+                    </div>
+                </div>
+
+                <div class="event-item">
+                    <div class="event-date">
+                        <div>Mar</div>
+                        <div>20</div>
+                    </div>
+                    <div class="event-content">
+                        <div class="event-type">Event</div>
+                        <h3 class="event-title">Entrepreneurship Workshop</h3>
+                        <p class="event-description">Mr Abin Abdul Rehman's session was highly relatable and engaging, as he drew from his own real life experiences as a fitness coach to illustrate concepts in entrepreneurial thinking, innovation and business development.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1106,36 +2231,92 @@
         </div>
     </section>
 
+    <!-- Partners Section -->
+    <section class="partners-section" id="partners">
+        <div class="partners-container">
+            <h2 class="section-title">Our Partners</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem; color: var(--text-gray);">
+                Here are some organizations we have the pleasure of working with to provide the best educational experience.
+            </p>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <div class="partner-logo">📚</div>
+                    <div class="partner-name">CBSE</div>
+                    <div class="partner-description">Central Board of Secondary Education - Our curriculum is aligned with CBSE standards ensuring quality education and recognized certifications.</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo">🎯</div>
+                    <div class="partner-name">NEET & JEE Foundation</div>
+                    <div class="partner-description">Specialized coaching programs for competitive examinations, preparing students for medical and engineering entrance tests.</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo">🌟</div>
+                    <div class="partner-name">Educational Consultants</div>
+                    <div class="partner-description">Professional guidance for higher education pathways, career counseling, and university placements worldwide.</div>
+                </div>
+                <div class="partner-card">
+                    <div class="partner-logo">🏆</div>
+                    <div class="partner-name">Sports Academy</div>
+                    <div class="partner-description">Partnership with local sports academies to provide professional training and development in various athletic disciplines.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="footer-content">
-            <div>
+            <div class="footer-section">
                 <h3>Emerald International School</h3>
                 <p>Mannarkkad, Kerala</p>
                 <p>Excellence in Education Since Foundation</p>
+                <p>Nurturing young minds through academic rigor, character development, and innovative thinking.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="https://www.instagram.com/emeraldinternational_schoolmkd/" target="_blank" class="social-link">📷</a>
+                    <a href="#" class="social-link">💼</a>
+                    <a href="#" class="social-link">📺</a>
+                </div>
             </div>
-            <div>
+            <div class="footer-section">
                 <h3>Quick Links</h3>
-                <a href="#about">About Us</a>
-                <a href="#academics">Academics</a>
-                <a href="admissions.html">Admissions</a>
-                <a href="#contact">Contact</a>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#academics">Academics</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </div>
-            <div>
-                <h3>Connect With Us</h3>
-                <a href="#">Facebook</a>
-                <a href="https://www.instagram.com/emeraldinternational_schoolmkd/" target="_blank">Instagram</a>
-                <a href="#">LinkedIn</a>
-                <a href="#">YouTube</a>
+            <div class="footer-section">
+                <h3>Academics</h3>
+                <ul class="footer-links">
+                    <li><a href="#learning-stages">Learning Stages</a></li>
+                    <li><a href="#academics">NEET & JEE Program</a></li>
+                    <li><a href="#facilities">Laboratories</a></li>
+                    <li><a href="#facilities">Library</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                </ul>
             </div>
-            <div>
+            <div class="footer-section">
                 <h3>Contact Information</h3>
-                <p>Email: info@emeraldinternational.edu</p>
-                <p>Phone: +91 XXXX XXXXXX</p>
-                <p>Mannarkkad, Kerala, India</p>
+                <p><strong>Email:</strong> info@emeraldinternational.edu</p>
+                <p><strong>Phone:</strong> +91 XXXX XXXXXX</p>
+                <p><strong>Address:</strong> Mannarkkad, Kerala, India</p>
+                <p><strong>Hours:</strong> Mon-Fri 8:00 AM - 4:00 PM</p>
+                <div class="newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for latest updates and events.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Emerald International School Mannarkkad. All rights reserved.</p>
+            <p>&copy; 2025 Emerald International School Mannarkkad. All rights reserved. | Privacy Policy | Terms of Service</p>
         </div>
     </footer>
 
@@ -1146,6 +2327,7 @@
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', function() {
             initAnimations();
+            initMobileMenu();
             document.querySelectorAll('.stat-item').forEach(el => {
                 statsObserver.observe(el);
             });
@@ -1187,6 +2369,36 @@
             });
             
             document.querySelectorAll('.achievement-card').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe stage cards
+            document.querySelectorAll('.stage-card').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe testimonial cards
+            document.querySelectorAll('.testimonial-card').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe gallery items
+            document.querySelectorAll('.gallery-item').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe event items
+            document.querySelectorAll('.event-item').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe management cards
+            document.querySelectorAll('.management-card').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe partner cards
+            document.querySelectorAll('.partner-card').forEach(el => {
                 observer.observe(el);
             });
             
@@ -1271,6 +2483,42 @@
                 }
             });
         }, { threshold: 0.5 });
+
+        // Mobile menu functionality
+        function initMobileMenu() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if (mobileMenuToggle && mobileMenu) {
+                mobileMenuToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('active');
+                });
+
+                // Close mobile menu when clicking on links
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active');
+                    });
+                });
+
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                        mobileMenu.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        // Newsletter subscription
+        document.querySelector('.newsletter-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Thank you for subscribing to our newsletter!');
+                this.reset();
+            }
+        });
     </script>
 </body>
 </html>
